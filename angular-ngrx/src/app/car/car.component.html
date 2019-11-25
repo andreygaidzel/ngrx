@@ -12,9 +12,9 @@
   <hr/>
   <div class="row justify-content-md-center">
     <div class="col col-md-12">
-      <button (click)="onDelete()" type="button" class="btn btn-danger btn-sm">Delete</button>
+      <button (click)="onDelete(car.id)" type="button" class="btn btn-danger btn-sm">Delete</button>
       <button
-        (click)="onBuy()"
+        (click)="onBuy(car.id)"
         [disabled]="car.isSold"
         type="button"
         class="btn btn-success btn-sm">Buy</button>

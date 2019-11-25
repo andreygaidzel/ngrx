@@ -5,7 +5,6 @@
 
   <div class="list-group mt-4">
     <app-car
-      (deleteCar)="onDelete($event)"
       *ngFor="let car of (carState | async).cars"
       [car]="car"
     ></app-car>

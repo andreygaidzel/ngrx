@@ -1,5 +1,5 @@
 import { Car } from '../car.model';
-import { AddCar, CAR_ACTION } from './cars.action';
+import { CAR_ACTION, AddCar, BuyCar, RemoveCar } from './cars.action';
 
 const initialState = {
   cars: [
@@ -8,12 +8,27 @@ const initialState = {
   ]
 };
 
-export function carsReducer(state = initialState, action: AddCar) {
+export function carsReducer(state = initialState, action: AddCar | RemoveCar | BuyCar) {
   switch (action.type) {
     case CAR_ACTION.ADD_CAR:
       return {
         ...state,
         cars: [...state.cars, action.payload]
+      };
+    case CAR_ACTION.REMOVE_CAR:
+      return {
+        ...state,
+        cars: state.cars.filter( x => x.id !== action.payload )
+      };
+    case CAR_ACTION.BUY_CAR:
+      return {
+        ...state,
+        cars: state.cars.map( x => {
+          if (x.id === action.payload) {
+            x.isSold = true;
+          }
+          return x;
+        })
       };
     default:
       return state;

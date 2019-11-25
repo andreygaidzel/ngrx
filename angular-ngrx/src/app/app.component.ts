@@ -19,8 +19,4 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.carState = this.store.select('carPage');
   }
-
-  onDelete(car: Car) {
-    this.cars = this.cars.filter(c => c.id !== car.id );
-  }
 }
